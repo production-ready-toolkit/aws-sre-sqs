@@ -26,7 +26,7 @@
 | `fifo_deduplication_scope`        | `messageGroup`        | no        | `string`  |                   |
 | `fifo_throughput_limit`           | `perMessageGroupId`   | no        | `string`  |                   |
 | `tags`                            | `{}`                  | no        | `map(any)`| Tags to resources |
-|-----------------------------------|-----------------------|-----------|-----------|---------------------
+|---                                |---                    |---        |---        |---                |
 | `delay_dlq`                       | `900`                 | no        | `number`  |                   |  
 | `expiration_time_seconds_dlq`     | `1209600`             | no        | `number`  |                   |  
 | `receive_wait_time_seconds_dlq`   | `20`                  | no        | `number`  |                   |  
