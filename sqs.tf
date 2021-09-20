@@ -1,5 +1,5 @@
 resource "aws_sqs_queue" "main" {
-    name                        = var.name
+    name                        = format("%s%s", var.name, var.fifo ? ".fifo" : "")
     fifo_queue                  = var.fifo
 
     max_message_size            = var.max_message_size
@@ -26,7 +26,7 @@ resource "aws_sqs_queue" "main" {
 }
 
 resource "aws_sqs_queue" "dlq" {
-    name                        = format("%s-dlq", var.name)
+    name                        = format("%s.dlq%s", var.name, var.fifo ? ".fifo" : "")
 
     max_message_size            = var.max_message_size
     visibility_timeout_seconds  = var.visibility_timeout_seconds_dlq
