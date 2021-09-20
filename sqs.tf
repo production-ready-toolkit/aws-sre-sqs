@@ -2,7 +2,7 @@ resource "aws_sqs_queue" "main" {
     name                        = format("%s%s", var.name, var.fifo ? ".fifo" : "")
 
     max_message_size            = var.max_message_size
-    visibility_timeout_seconds  = var.visibility_timeout_seconds
+    visibility_timeout_seconds  = var.visibility_timeout 
     message_retention_seconds   = var.expiration_time_seconds
     receive_wait_time_seconds   = var.receive_wait_time_seconds
 
@@ -28,7 +28,7 @@ resource "aws_sqs_queue" "dlq" {
     name                        = format("%s-dlq%s", var.name, var.fifo ? ".fifo" : "")
 
     max_message_size            = var.max_message_size
-    visibility_timeout_seconds  = var.visibility_timeout_seconds_dlq
+    visibility_timeout_seconds  = var.visibility_timeout_dlq
     message_retention_seconds   = var.expiration_time_seconds_dlq
     receive_wait_time_seconds   = var.receive_wait_time_seconds_dlq
 

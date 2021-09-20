@@ -30,13 +30,15 @@ variable "max_message_size" {
   default       = 262144
 }
 
-variable "visibility_timeout_seconds" {
+variable "visibility_timeout" {
   type          = number
+  description   = "Timeout to non/ack messages return to queue to be resconsumed"
   default       = 60 
 }   
 
-variable "visibility_timeout_seconds_dlq" {
+variable "visibility_timeout_dlq" {
   type          = number
+  description   = "Timeout to non/ack messages return to queue to be resconsumed"
   default       = 180 
 }  
 
