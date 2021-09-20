@@ -33,8 +33,6 @@ resource "aws_sqs_queue" "dlq" {
     message_retention_seconds   = var.expiration_time_seconds_dlq
     receive_wait_time_seconds   = var.receive_wait_time_seconds_dlq
 
-    content_based_deduplication = var.fifo
-
     delay_seconds               = var.delay_dlq
 
     kms_master_key_id                   = var.kms_key != "" ? var.kms_key : aws_kms_key.main[0].arn
