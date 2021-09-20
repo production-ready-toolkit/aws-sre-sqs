@@ -26,7 +26,7 @@
 | `fifo_deduplication_scope`        | `messageGroup`        | no        | `string`  |                   |
 | `fifo_throughput_limit`           | `perMessageGroupId`   | no        | `string`  |                   |
 | `tags`                            | `{}`                  | no        | `map(any)`| Tags to resources |
----------------------------------------------------------------------------------------------------------
+|-----------------------------------|-----------------------|-----------|-----------|---------------------
 | `delay_dlq`                       | `900`                 | no        | `number`  |                   |  
 | `expiration_time_seconds_dlq`     | `1209600`             | no        | `number`  |                   |  
 | `receive_wait_time_seconds_dlq`   | `20`                  | no        | `number`  |                   |  
@@ -47,7 +47,21 @@ module "dummy" {
     source      = "github.com/production-ready-toolkit/aws-sre-sqs"
 
     name        = "dummy"
+    max_retry   = 3
+    tags        = {
+        "environment" = "production"
+    }
+}
+```
 
+## Basic usage for FIFO Queues Support
+
+```hcl
+module "dummy_fifo" {
+    source      = "github.com/production-ready-toolkit/aws-sre-sqs"
+
+    name        = "dummy-fifo"
+    max_retry   = 3
     tags        = {
         "environment" = "production"
     }
